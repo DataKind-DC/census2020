@@ -102,26 +102,54 @@ datatable(sd2, rownames = TRUE, extensions = 'Scroller', options = list(
           ))
 ```
 
-### Documentation
-<h3>App description </h3>
-* a  
-* b  
-* c  
-![](fig/census_app_front_1_note.png){width=75%}  
+### Documentation 
+TABLE OF CONTENT  
 
-<h3>Feature Selectoin Consideration </h3>
-- a  
-- b  
-- c 
+1. **Application Motivation**  
+1. **Application description**  
+1. **Application features**  
+1. **Data dictionary**  
 
-<h3>Control Buttons </h3>  
-- a  
-- b  
-- c    
-<h3>Data Dictonary* </h3>   
-- a  
-- b  
-- c  
+
+
+<h3> Application Motivation </h3>
+Building tools to identify low responding communities in the 2020 National Census as part of the Census Bureau's Opportunity Project.
+
+
+<h3> Application description</h3>
+<h4> Short:</h4>
+This web application intend to identifying low participating communities in the upcoming Census 2020 to aid a special outreach  program design and increase participation.
+
+<h4> Long: </h4>
+The application uses data from 2010 Census and 2013-2017 American community survey. For now, the application is limited to the District of Columbia (DC), and it includes block group level information. 
+
+The application focuses on households who do not speak english very well or use language other than english in the household for all 450 block groups and 179 tracts in DC.
+
+A participation propensity response_score ranging from 2-49 is assigned to each one of the 450 block groups for DC (source US Census).  A smaller response_score number indicates high participation, and a high response_score indicate low participation. A light to darker color schema is applied to the markers for each block group. A lighter color indicate high participation and darker color indicate low participation.
+
+<h3> Application features <h3>
+
+<h4> Controls:-</h4>
+There are four sidebar control that can be used to filter content. The propensity slider (1), the drop down combined tract/block group selector(2), the tract selector (3) and block group selector(4).  The last two features should be used in combination to zoom in on block group of interest. 
+
+<h4> Window pans:- </h4>
+There are four window pans including the map (1), bar chart for window 2), the propensity scatter plot (3) and the searchable datable(4). When applying the control features, each window content updates dynamically to match the selected tract and block groups. 
+
+<h4> Hover Effect:-</h4>
+When a mouse is hovered over the map, each block group is highlighted with green line, and a popup appears showing the tract and block group number.
+
+<h4> Popup Text:- </h4>
+When the marker in each block group is clicked with a mouse, a popup appears and display the tract, block group, response score and the percentages of the four group population who do not speak english very well, or use language other than english in the household. 
+
+
+<h3> Data dictionary <h3>
+```{r, eval=TRUE}
+library(kableExtra)
+data <- read.csv("data/var_data_dictionary.csv")
+data %>% 
+        kable("html", escape = F) %>%
+        kable_styling(bootstrap_options = "striped", "hover", full_width = F, font_size = 12)
+```
 
 Column {data-width=400}
 -------------------------------------
